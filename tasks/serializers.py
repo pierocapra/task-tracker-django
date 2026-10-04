@@ -47,4 +47,4 @@ class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
         if user is None or not user.is_active or not user.check_password(attrs["password"]):
             raise AuthenticationFailed("Invalid email or password.")
         refresh = self.get_token(user)
-        return {"refresh": str(refresh), "access": str(refresh.access_token)}
+        return {"token": str(refresh.access_token)}
